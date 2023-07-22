@@ -6,13 +6,17 @@ const redaksi = document.getElementById("invitation-editor");
 
 const shareButton = document.querySelector(".share-btn");
 
+const copyButton = document.querySelector(".copy");
+
 function convertToSlug(Text) {
   return Text.replace(/[^\w ]+/g, "").replace(/ +/g, "%2B");
 }
+let targetValue;
 
 guestName.addEventListener("input", (e) => {
   invitationURI.value =
     "https://dinvite.ajakan.me/dayatfatmah?to=" + convertToSlug(e.target.value);
+  targetValue = e.target.value;
 
   //   redaksi.innerHTML = `السَّلاَمُ عَلَيْكُمْ وَرَحْمَةُ اللهِ وَبَرَكَاتُهُ
 
@@ -42,4 +46,11 @@ guestName.addEventListener("input", (e) => {
   shareButton.href = `https://api.whatsapp.com/send/?text=https://dinvite.ajakan.me/dayatfatmah?to=${convertToSlug(
     e.target.value
   )}`;
+});
+copyButton.addEventListener("click", function () {
+  if (targetValue) {
+    navigator.clipboard.writeText(
+      `https://dayatfatmah.vercel.app/df/?to=${convertToSlug(targetValue)}`
+    );
+  }
 });
