@@ -52,5 +52,9 @@ copyButton.addEventListener("click", function () {
     navigator.clipboard.writeText(
       `https://dayatfatmah.vercel.app/df/?to=${convertToSlug(targetValue)}`
     );
+    copyButton.innerHTML = "BERHASIL!";
+    setTimeout(() => {
+      copyButton.innerHTML = "COPY LINK";
+    }, 1000);
   }
 });
