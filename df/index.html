@@ -51,6 +51,23 @@
     <title>Undangan Pernikahan Dayat &amp; Fatmah</title>
   </head>
   <body>
-    <h1>diditamin</h1>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const to = urlParams.get("to");
+
+        const a = document.createElement("a");
+
+        document.body.appendChild(a);
+        if (to) {
+          to.replace(/\+/g, "%2B");
+          a.href = `https://dinvite.ajakan.me/dayatfatmah?to=${to}`;
+          a.click();
+        } else {
+          a.href = `https://dinvite.ajakan.me/dayatfatmah`;
+          a.click();
+        }
+      });
+    </script>
   </body>
 </html>
